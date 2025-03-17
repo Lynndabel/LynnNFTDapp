@@ -5,6 +5,7 @@ import NFT_ABI from "../ABI/nft.json";
 import { getEthersSigner } from "../config/wallet-connection/adapter";
 import { isSupportedNetwork } from "../utils";
 import { useAppContext } from "../contexts/appContext";
+import { toast } from 'react-toastify';
 
 const useTransferToken = () => {
     const { address } = useAccount();
@@ -13,29 +14,19 @@ const useTransferToken = () => {
     const { refreshUserTokens } = useAppContext();
     
     return useCallback(async (tokenId, toAddress) => {
-        if (!address) return alert("Please connect your wallet");
-        if (!isSupportedNetwork(chainId)) return alert("Unsupported network");
-        
-        // Validate recipient address
-        if (!toAddress || toAddress.trim() === '') {
-            return alert("Please enter a recipient address");
+        if (!address) {
+            toast.error("Please connect your wallet");
+            return null;
         }
         
-        // Basic Ethereum address validation
-        if (!/^0x[a-fA-F0-9]{40}$/.test(toAddress)) {
-            return alert("Please enter a valid Ethereum address");
+        if (!isSupportedNetwork(chainId)) {
+            toast.error("Unsupported network. Please switch to a supported network");
+            return null;
         }
         
-        // Prevent sending to the zero address
-        if (toAddress === '0x0000000000000000000000000000000000000000') {
-            return alert("Cannot transfer to the zero address");
-        }
+        // Validation is now handled in MyTokens component to prevent modal closure
+        // and allow better user experience
         
-        // Prevent sending to your own address
-        if (toAddress.toLowerCase() === address.toLowerCase()) {
-            return alert("Cannot transfer to your own address");
-        }
-
         try {
             const signer = await getEthersSigner(wagmiConfig);
             const contract = new Contract(
@@ -47,12 +38,23 @@ const useTransferToken = () => {
             // Check if the connected wallet is the owner of the token
             const tokenOwner = await contract.ownerOf(tokenId);
             if (tokenOwner.toLowerCase() !== address.toLowerCase()) {
-                return alert("You are not the owner of this token");
+                toast.error("You are not the owner of this token");
+                return null;
             }
 
+            // Create a loading toast that we can update later
+            const pendingToast = toast.loading("Preparing transfer...");
+            
             // Execute the transfer
             const tx = await contract.transferFrom(address, toAddress, tokenId);
             console.log("Transfer transaction sent:", tx.hash);
+            
+            // Update toast to show transaction is pending
+            toast.update(pendingToast, {
+                render: "Transfer pending...",
+                type: "info",
+                isLoading: true,
+            });
             
             // Set up event listener for the Transfer event
             contract.on("Transfer", (from, to, id) => {
@@ -64,6 +66,12 @@ const useTransferToken = () => {
             
             const receipt = await tx.wait();
             if (receipt.status === 0) {
+                toast.update(pendingToast, {
+                    render: "Transaction failed",
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 5000,
+                });
                 throw new Error("Transaction failed");
             }
             
@@ -73,18 +81,25 @@ const useTransferToken = () => {
             // Refresh the user's tokens
             refreshUserTokens();
             
-            alert("Token transferred successfully");
+            // Update toast to show success
+            toast.update(pendingToast, {
+                render: "Token transferred successfully!",
+                type: "success",
+                isLoading: false,
+                autoClose: 5000,
+            });
+            
             return receipt;
         } catch (error) {
             console.error("Transfer error:", error);
             
             // Show more meaningful error messages
             if (error.message.includes("insufficient funds")) {
-                alert("Insufficient funds to complete the transaction");
+                toast.error("Insufficient funds to complete the transaction");
             } else if (error.message.includes("user rejected")) {
-                alert("Transaction was rejected by the user");
+                toast.info("Transaction was rejected by the user");
             } else {
-                alert(`Error transferring token: ${error.message}`);
+                toast.error(`Error transferring token: ${error.message}`);
             }
             
             return null;

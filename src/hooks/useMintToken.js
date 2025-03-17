@@ -5,6 +5,7 @@ import { Contract } from "ethers";
 import NFT_ABI from "../ABI/nft.json";
 import { getEthersSigner } from "../config/wallet-connection/adapter";
 import { isSupportedNetwork } from "../utils";
+import { toast } from 'react-toastify';
 
 const useMintToken = () => {
     const { address } = useAccount();
@@ -13,17 +14,30 @@ const useMintToken = () => {
     const { nextTokenId, maxSupply, mintPrice, updateNextTokenId } = useAppContext();
     
     return useCallback(async () => {
-        if (!address) return alert("Please connect your wallet");
-        if (!isSupportedNetwork(chainId)) return alert("Unsupported network");
-        if (nextTokenId >= maxSupply) return alert("No more tokens to mint");
+        if (!address) {
+            toast.error("Please connect your wallet");
+            return null;
+        }
+        
+        if (!isSupportedNetwork(chainId)) {
+            toast.error("Unsupported network. Please switch to a supported network");
+            return null;
+        }
+        
+        if (nextTokenId >= maxSupply) {
+            toast.error("No more tokens to mint");
+            return null;
+        }
 
         const signer = await getEthersSigner(wagmiConfig);
-
         const contract = new Contract(
             import.meta.env.VITE_NFT_CONTRACT_ADDRESS,
             NFT_ABI,
             signer
         );
+
+        // Create a loading toast that we can update later
+        const pendingToast = toast.loading("Minting your NFT...");
 
         try {
             // Set up event listener for the Minted event before sending the transaction
@@ -39,15 +53,35 @@ const useMintToken = () => {
             const tx = await contract.mint({ value: mintPrice });
             console.log("Mint transaction sent:", tx.hash);
             
+            // Update toast to show transaction is pending
+            toast.update(pendingToast, {
+                render: "Transaction pending...",
+                type: "info",
+                isLoading: true,
+            });
+            
             const receipt = await tx.wait();
+            
             if (receipt.status === 0) {
+                toast.update(pendingToast, {
+                    render: "Transaction failed",
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 5000,
+                });
                 throw new Error("Transaction failed");
             }
 
             // Remove the event listener after transaction is confirmed
             contract.removeAllListeners("Minted");
             
-            alert("Token minted successfully");
+            // Update toast to show success
+            toast.update(pendingToast, {
+                render: "NFT minted successfully!",
+                type: "success",
+                isLoading: false,
+                autoClose: 5000,
+            });
             
             // Fallback method to update token ID if event doesn't fire
             // This gets the latest token ID from the contract
@@ -62,11 +96,26 @@ const useMintToken = () => {
             
             // Show more meaningful error messages
             if (error.message.includes("insufficient funds")) {
-                alert("Insufficient funds to complete the transaction");
+                toast.update(pendingToast, {
+                    render: "Insufficient funds to complete the transaction",
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 5000,
+                });
             } else if (error.message.includes("user rejected")) {
-                alert("Transaction was rejected by the user");
+                toast.update(pendingToast, {
+                    render: "Transaction was rejected by the user",
+                    type: "info",
+                    isLoading: false,
+                    autoClose: 5000,
+                });
             } else {
-                alert(`Error minting token: ${error.message}`);
+                toast.update(pendingToast, {
+                    render: `Error minting token: ${error.message}`,
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 5000,
+                });
             }
             
             return null;
@@ -74,4 +123,4 @@ const useMintToken = () => {
     }, [address, chainId, maxSupply, mintPrice, nextTokenId, wagmiConfig, updateNextTokenId]);
 };
 
-export default useMintToken;    
+export default useMintToken;

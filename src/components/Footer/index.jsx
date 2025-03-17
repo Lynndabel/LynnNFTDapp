@@ -1,28 +1,36 @@
 import { motion } from "framer-motion";
 
 const Footer = () => {
+    // This function already gets the current year automatically
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="relative bg-black border-t border-white/10 overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-900/20 rounded-full filter blur-3xl opacity-30"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-900/20 rounded-full filter blur-3xl opacity-30"></div>
+        <footer className="relative bg-black border-t border-green-800/30 overflow-hidden">
+            {/* Background decorative elements - South African colors */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-800/20 rounded-full filter blur-3xl opacity-30"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-800/20 rounded-full filter blur-3xl opacity-30"></div>
+            
+            {/* South African flag-inspired diagonal elements */}
+            <div className="absolute inset-0 overflow-hidden opacity-10">
+                <div className="absolute -top-[20%] -left-[10%] w-[140%] h-[30%] bg-blue-700 transform rotate-12"></div>
+                <div className="absolute top-[40%] -left-[10%] w-[140%] h-[30%] bg-red-700 transform -rotate-6"></div>
+                <div className="absolute top-[60%] -left-[10%] w-[140%] h-[30%] bg-green-700 transform rotate-6"></div>
+            </div>
             
             <div className="container mx-auto px-4 py-16 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                     {/* Logo and Description */}
                     <div className="md:col-span-2">
                         <div className="flex items-center mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mr-3 shadow-lg">
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-yellow-500 flex items-center justify-center mr-3 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                                     <path d="M2.42 14.74L13.29 4.3a5.89 5.89 0 0 1 8.7.44l-6.53 6.53a5.87 5.87 0 0 1-8.7-.44"></path>
                                     <path d="M16.57 19.7l-9.9-9.9a5.89 5.89 0 0 1-.44-8.7l6.53 6.53a5.87 5.87 0 0 1 .44 8.7"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h1 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-                                    NFT Vault
+                                <h1 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-yellow-500 to-red-500">
+                                    LyndabelNFT Vault
                                 </h1>
                                 <p className="text-xs text-gray-400">Exclusive Collection</p>
                             </div>
@@ -36,7 +44,7 @@ const Footer = () => {
                             <motion.a 
                                 whileHover={{ y: -3 }}
                                 href="#" 
-                                className="bg-white/5 hover:bg-white/10 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+                                className="bg-green-900/20 hover:bg-green-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
@@ -45,7 +53,7 @@ const Footer = () => {
                             <motion.a 
                                 whileHover={{ y: -3 }}
                                 href="#" 
-                                className="bg-white/5 hover:bg-white/10 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+                                className="bg-yellow-900/20 hover:bg-yellow-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -54,7 +62,7 @@ const Footer = () => {
                             <motion.a 
                                 whileHover={{ y: -3 }}
                                 href="#" 
-                                className="bg-white/5 hover:bg-white/10 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+                                className="bg-red-900/20 hover:bg-red-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -65,7 +73,7 @@ const Footer = () => {
                             <motion.a 
                                 whileHover={{ y: -3 }}
                                 href="#" 
-                                className="bg-white/5 hover:bg-white/10 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+                                className="bg-blue-900/20 hover:bg-blue-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
@@ -90,7 +98,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Home
@@ -98,7 +106,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Explore
@@ -106,7 +114,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Marketplace
@@ -114,7 +122,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Artists
@@ -122,7 +130,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Collections
@@ -137,7 +145,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Help Center
@@ -145,7 +153,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Platform Status
@@ -153,7 +161,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Partners
@@ -161,7 +169,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Blog
@@ -169,7 +177,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                     Newsletter
@@ -179,9 +187,19 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                {/* South African flag color stripe */}
+                <div className="w-full h-1 flex mt-12 mb-8">
+                    <div className="w-1/6 h-full bg-red-600"></div>
+                    <div className="w-1/6 h-full bg-blue-600"></div>
+                    <div className="w-1/6 h-full bg-green-600"></div>
+                    <div className="w-1/6 h-full bg-yellow-500"></div>
+                    <div className="w-1/6 h-full bg-black"></div>
+                    <div className="w-1/6 h-full bg-white"></div>
+                </div>
+
+                <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
                     <p className="text-gray-500 text-sm mb-4 md:mb-0">
-                        &copy; {currentYear} NFT Vault. Built with ❤️ by Cohort XII. All rights reserved.
+                        &copy; {currentYear} LyndabelNFT Vault. Built with ❤️ by Cohort LYNNDABEL.
                     </p>
                     <div className="flex space-x-6">
                         <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
