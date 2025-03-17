@@ -1,16 +1,13 @@
 import { motion } from "framer-motion";
 
 const Footer = () => {
-    // This function already gets the current year automatically
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className="relative bg-black border-t border-green-800/30 overflow-hidden">
-            {/* Background decorative elements - South African colors */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-800/20 rounded-full filter blur-3xl opacity-30"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-800/20 rounded-full filter blur-3xl opacity-30"></div>
-            
-            {/* South African flag-inspired diagonal elements */}
+
             <div className="absolute inset-0 overflow-hidden opacity-10">
                 <div className="absolute -top-[20%] -left-[10%] w-[140%] h-[30%] bg-blue-700 transform rotate-12"></div>
                 <div className="absolute top-[40%] -left-[10%] w-[140%] h-[30%] bg-red-700 transform -rotate-6"></div>
@@ -19,40 +16,39 @@ const Footer = () => {
             
             <div className="container mx-auto px-4 py-16 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-                    {/* Logo and Description */}
                     <div className="md:col-span-2">
                         <div className="flex items-center mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-yellow-500 flex items-center justify-center mr-3 shadow-lg">
+                            {/* <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-yellow-500 flex items-center justify-center mr-3 shadow-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                                     <path d="M2.42 14.74L13.29 4.3a5.89 5.89 0 0 1 8.7.44l-6.53 6.53a5.87 5.87 0 0 1-8.7-.44"></path>
                                     <path d="M16.57 19.7l-9.9-9.9a5.89 5.89 0 0 1-.44-8.7l6.53 6.53a5.87 5.87 0 0 1 .44 8.7"></path>
                                 </svg>
-                            </div>
+                            </div> */}
                             <div>
                                 <h1 className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-yellow-500 to-red-500">
-                                    LyndabelNFT Vault
+                                    LynndabelNFT Vault
                                 </h1>
-                                <p className="text-xs text-gray-400">Exclusive Collection</p>
+                                <p className="text-xs text-gray-400">Perfection in Each Piece</p>
                             </div>
                         </div>
                         <p className="text-gray-400 mb-8">
-                            Experience the future of digital ownership with our exclusive NFT 
-                            collection. Each piece is uniquely crafted and securely stored on 
+                            Be part of our exclusive NFT Collection, built by the best artist.
+                            Each piece is uniquely crafted and securely stored on 
                             the blockchain, ensuring authenticity and provenance.
                         </p>
                         <div className="flex space-x-4">
                             <motion.a 
                                 whileHover={{ y: -3 }}
-                                href="#" 
+                                href="https://x.com/Lynndabel" 
                                 className="bg-green-900/20 hover:bg-green-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14.095479,10.316482L22.286354,1h-1.940718l-7.115352,8.087682L7.551414,1H1l8.589488,12.231093L1,23h1.940717  l7.509372-8.542861L16.448587,23H23L14.095479,10.316482z M11.436522,13.338465l-0.871624-1.218704l-6.924311-9.68815h2.981339  l5.58978,7.82155l0.867949,1.218704l7.26506,10.166271h-2.981339L11.436522,13.338465z"/>
                                 </svg>
                             </motion.a>
                             <motion.a 
                                 whileHover={{ y: -3 }}
-                                href="#" 
+                                href="https://www.facebook.com/ebele.okolocleo/" 
                                 className="bg-yellow-900/20 hover:bg-yellow-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -61,7 +57,7 @@ const Footer = () => {
                             </motion.a>
                             <motion.a 
                                 whileHover={{ y: -3 }}
-                                href="#" 
+                                href="https://www.instagram.com/lynncode_/" 
                                 className="bg-red-900/20 hover:bg-red-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -70,7 +66,7 @@ const Footer = () => {
                                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                                 </svg>
                             </motion.a>
-                            <motion.a 
+                            {/* <motion.a 
                                 whileHover={{ y: -3 }}
                                 href="#" 
                                 className="bg-blue-900/20 hover:bg-blue-900/30 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
@@ -79,10 +75,10 @@ const Footer = () => {
                                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                                     <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                                 </svg>
-                            </motion.a>
+                            </motion.a> */}
                             <motion.a 
                                 whileHover={{ y: -3 }}
-                                href="#" 
+                                href="https://github.com/Lynndabel" 
                                 className="bg-white/5 hover:bg-white/10 p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -92,7 +88,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
                     <div>
                         <h3 className="text-white font-semibold mb-6 text-lg">Quick Links</h3>
                         <ul className="space-y-3">
@@ -139,7 +134,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Resources */}
                     <div>
                         <h3 className="text-white font-semibold mb-6 text-lg">Resources</h3>
                         <ul className="space-y-3">
@@ -186,8 +180,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-
-                {/* South African flag color stripe */}
+                
                 <div className="w-full h-1 flex mt-12 mb-8">
                     <div className="w-1/6 h-full bg-red-600"></div>
                     <div className="w-1/6 h-full bg-blue-600"></div>
@@ -199,7 +192,7 @@ const Footer = () => {
 
                 <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
                     <p className="text-gray-500 text-sm mb-4 md:mb-0">
-                        &copy; {currentYear} LyndabelNFT Vault. Built with ❤️ by Cohort LYNNDABEL.
+                        &copy; {currentYear} LynndabelNFT Vault. Built with ❤️ by Cohort XII. All rights reserved.
                     </p>
                     <div className="flex space-x-6">
                         <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>

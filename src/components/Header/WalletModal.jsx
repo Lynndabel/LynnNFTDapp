@@ -37,7 +37,7 @@ const WalletModal = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center font-semibold transition duration-200 shadow-md"
+                className="bg-gradient-to-r from-red-600 to-blue-600 text-white shadow-lg hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center font-semibold transition duration-200 shadow-md"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                     <rect x="2" y="6" width="20" height="12" rx="2"></rect>

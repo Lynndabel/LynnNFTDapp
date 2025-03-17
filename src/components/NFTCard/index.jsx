@@ -30,7 +30,6 @@ const NFTCard = ({ metadata, mintPrice, tokenId, nextTokenId, mintNFT }) => {
                             alt={`${metadata.name} image`}
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                        {/* South African flag-inspired diagonal overlay */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
                             <div className="absolute top-0 left-0 w-full h-[20%] bg-red-700"></div>
                             <div className="absolute top-[20%] left-0 w-full h-[20%] bg-blue-700"></div>

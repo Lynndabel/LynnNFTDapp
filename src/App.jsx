@@ -66,7 +66,6 @@ function App() {
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                 
-                {/* South African flag-inspired diagonal elements */}
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-[30%] -left-[10%] w-[140%] h-[30%] bg-red-700 transform rotate-6 opacity-20"></div>
                     <div className="absolute -top-[10%] -left-[10%] w-[140%] h-[30%] bg-blue-700 transform rotate-12 opacity-20"></div>
